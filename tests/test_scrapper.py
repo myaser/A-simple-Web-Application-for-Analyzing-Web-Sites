@@ -23,7 +23,7 @@ def test_path_not_found_doc():
 def test_html5_doc():
     response = requests.get(make_url('html5_test_doc.html'))
     expected = [{
-        '_status': 200,
+        # '_status': 200,
         'external_links': 2,
         'h1': 3,
         'h2': 3,
@@ -44,7 +44,7 @@ def test_html5_doc():
 def test_html4_doc():
     response = requests.get(make_url('html4_test_doc.html'))
     expected = [{
-        '_status': 200,
+        # '_status': 200,
         'external_links': 0,
         'h1': 0,
         'h2': 0,
@@ -64,7 +64,7 @@ def test_html4_doc():
 def test_xhtml_doc():
     response = requests.get(make_url('xhtml_test_doc.xhtml'))
     expected = [{
-        '_status': 200,
+        # '_status': 200,
         'external_links': 0,
         'h1': 0,
         'h2': 0,
@@ -84,7 +84,7 @@ def test_xhtml_doc():
 def test_non_html_doc():
     response = requests.get(make_url('non_html_doc.txt'))
     expected = [{
-        '_status': 200,
+        # '_status': 200,
         'external_links': 0,
         'h1': 0,
         'h2': 0,
@@ -105,7 +105,7 @@ def test_non_html_doc():
 def test_has_login_form():
     response = requests.get(make_url('test_login_form.html'))
     expected = [{
-        '_status': 200,
+        # '_status': 200,
         'external_links': 0,
         'h1': 0,
         'h2': 0,
@@ -124,7 +124,7 @@ def test_has_login_form():
 
     response = requests.get(make_url('test_signup_form.html'))
     expected = [{
-        '_status': 200,
+        # '_status': 200,
         'external_links': 0,
         'h1': 0,
         'h2': 0,

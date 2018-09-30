@@ -77,7 +77,7 @@ class AnalyzerSpider(scrapy.Spider):
                list(map(lambda link: link.url, external_links))
         inaccessible_links = self._count_inaccessible_links(urls)
         yield {
-            "_status": response.status,
+            # "_status": response.status,
             "version": doctype_parser.version,
             "title": response.xpath('//title/text()').get(),
             "h1": len(response.css('h1').extract()),
