@@ -1,0 +1,41 @@
+version: '3.6'
+
+services:
+  splash:
+    image: scrapinghub/splash
+    expose:
+    - "8050"
+    restart: "always"
+
+  scrapper:
+    build:
+      context: scrapper
+      dockerfile: Dockerfile
+    volumes:
+    - ./scrapper:/scrapyrt/project
+    - ./logs:/scrapyrt/project/logs
+    ports:
+    - "9080:9080"
+    restart: "always"
+    depends_on:
+    - splash
+
+  test_data:
+    image: nginx
+    volumes:
+    - ./test_data:/usr/share/nginx/html:ro
+    expose:
+    - "80"
+    restart: "no"
+
+  tests:
+    build:
+      context: tests
+      dockerfile: Dockerfile
+    volumes:
+    - ./tests:/tests
+    command: "pytest -vvv"
+    restart: "no"
+    depends_on:
+    - test_data
+    - scrapper
